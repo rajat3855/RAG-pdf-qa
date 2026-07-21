@@ -94,23 +94,6 @@ Response:
 ### Interactive API Docs
 Visit `http://localhost:8000/docs` for Swagger UI.
 
----
-
-## Want to use OpenAI instead of Ollama?
-
-In `app/query.py`, replace:
-```python
-from langchain_ollama import OllamaLLM
-llm = OllamaLLM(model="llama3")
-```
-
-With:
-```python
-from langchain_openai import ChatOpenAI
-llm = ChatOpenAI(model="gpt-3.5-turbo", api_key="your-key")
-```
-
-And add `langchain-openai` and `openai` to `requirements.txt`.
 
 ---
 
