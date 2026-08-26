@@ -5,7 +5,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 VECTORSTORE_DIR = "vectorstore"
-EMBED_MODEL = "all-MiniLM-L6-v2"  # Free, runs locally, no API key needed
+EMBED_MODEL = "all-MiniLM-L6-v2"  
 
 
 def get_embeddings():
