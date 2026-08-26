@@ -8,7 +8,7 @@ from langchain.chains import RetrievalQA
 VECTORSTORE_DIR = "vectorstore"
 EMBED_MODEL = "all-MiniLM-L6-v2"
 
-# Prompt template — instructs the LLM to answer ONLY from context
+
 RAG_PROMPT = PromptTemplate(
     input_variables=["context", "question"],
     template="""You are a helpful assistant. Answer the question using ONLY the context below.
@@ -43,7 +43,7 @@ def answer_question(question: str, filename: str) -> dict:
             "error": f"No vector store found for '{filename}'. Please upload and ingest the PDF first."
         }
 
-    # Step 1 & 2: Embed question + retrieve top-k relevant chunks
+    
     embeddings = get_embeddings()
     db = FAISS.load_local(store_path, embeddings, allow_dangerous_deserialization=True)
     retriever = db.as_retriever(
@@ -51,10 +51,10 @@ def answer_question(question: str, filename: str) -> dict:
     search_kwargs={"k": 8, "fetch_k": 20}
 )
 
-    # Step 3: LLM (Ollama running locally — swap with OpenAI if preferred)
-    llm = OllamaLLM(model="llama3")  # Change to "mistral", "phi3", etc.
+    
+    llm = OllamaLLM(model="llama3")  
 
-    # Step 4: RAG chain
+    
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
@@ -65,8 +65,7 @@ def answer_question(question: str, filename: str) -> dict:
 
     result = qa_chain.invoke({"query": question})
 
-    # Format source citations
-    # Format source citations (deduplicated)
+    
     seen = set()
     sources = []
     for doc in result.get("source_documents", []):
