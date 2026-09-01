@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
-VECTORSTORE_DIR = "vectorstore"
+VECTORSTORE_DIR = "vectorstoe"
 EMBED_MODEL = "all-MiniLM-L6-v2"  
 
 
