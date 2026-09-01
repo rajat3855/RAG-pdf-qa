@@ -13,7 +13,7 @@ def get_embeddings():
 
 
 def ingest_pdf(file_path: str, filename: str) -> int:
-    """
+    ""
     Ingestion pipeline:
     1. Load PDF
     2. Split into chunks
